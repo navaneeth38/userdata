@@ -1,0 +1,34 @@
+.App {
+  text-align: center;
+  border: 1px solid gray;
+  
+}
+
+.container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttons{
+  padding-left: 25%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-top: 20px;
+  width: 45%;
+  flex-wrap: wrap;
+}
+
+.single {
+  font-size:x-large;
+  border: 2px solid rgba(34, 31, 31, 0.907);
+  width: 40%;
+  padding: 30px;
+  background-color: silver;
+}
+
+.singleButton{
+  padding: 18px;
+}
