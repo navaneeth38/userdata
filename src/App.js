@@ -15,6 +15,19 @@ function App() {
   const dispatch = useDispatch()
   const { posts, loading } = useSelector((state) => state.post) //post is keyname of postreducer in store
   const [profile, setProfile] = useState(0)
+  const [user,setUser] = useState({}) 
+  const fetching = (id) =>{ 
+       fetch(`https://reqres.in/api/users/${id}`)
+       .then(res => res.json())
+       .then(data => setUser(data.data) )
+     
+    }
+
+  const clickHandler = (id) =>{
+    setProfile(id)
+    fetching(id)
+  
+  }
 
   useEffect(() => {
     dispatch(getPosts())
@@ -30,9 +43,9 @@ function App() {
           <div>Click on any button below</div>
         </div>) :
           (<div className="single">
-            <div><img src={posts[profile - 1].avatar} alt="avatar" /></div>
-            <div><span style={{ fontWeight: "bold" }}>Name: </span>{posts[profile - 1].first_name} {posts[profile - 1].last_name}</div>
-            <div> <span style={{ fontWeight: "bold" }}>Mail: </span>{posts[profile - 1].email}</div>
+            <div><img src={user.avatar} alt="avatar" /></div>
+            <div><span style={{ fontWeight: "bold" }}>Name: </span>{user.first_name} {user.last_name}</div>
+            <div> <span style={{ fontWeight: "bold" }}>Mail: </span>{user.email}</div>
           </div>)}
       </div>
 
@@ -41,7 +54,7 @@ function App() {
         {posts.map((item) => {
           return (
             <div key={item.id} className="singleButton">
-              <button style={{ width: "180%", height: "150%" }} onClick={() => setProfile(item.id)}>{item.id}</button>
+              <button style={{ width: "180%", height: "150%" }} onClick={() => clickHandler(item.id)}>{item.id}</button>
             </div>
           )
         })}
