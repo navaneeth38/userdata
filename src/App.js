@@ -33,6 +33,9 @@ function App() {
     dispatch(getPosts())
   }, [])
 
+  if(loading){
+    return <h1>Loading.....</h1>
+  }
   return (
     <div className="App">
       <div className='container' >
