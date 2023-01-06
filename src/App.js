@@ -31,7 +31,7 @@ function App() {
 
   useEffect(() => {
     dispatch(getPosts())
-  }, [])
+  }, [dispatch])
 
   if(loading){
     return <h1>Loading.....</h1>
